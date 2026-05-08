@@ -2,12 +2,16 @@
 
 import { useCartStore } from '../../store/cart-store'
 
+function getProductPrice(product){
+	return (product?.price || 0) * (1 - (product?.discount || 0) / 100)
+}
+
 export default function CartPage(){
-	const items = useCartStore(state => state.items)
+	const items = useCartStore(state => (state.items || []).filter(item => item?.product?.id))
 	const increase = useCartStore(state => state.increase)
 	const decrease = useCartStore(state => state.decrease)
 	const removeItem = useCartStore(state => state.removeItem)
-	const subtotal = useCartStore(state => state.items.reduce((s, i) => s + ((i.product.price || 0) * (1 - (i.product.discount || 0)/100)) * (i.quantity || 0), 0))
+	const subtotal = useCartStore(state => (state.items || []).reduce((s, i) => s + getProductPrice(i?.product) * (i?.quantity || 0), 0))
 
 	if (!items || items.length === 0) return <div className="container p-6">Your cart is empty</div>
 
@@ -18,10 +22,10 @@ export default function CartPage(){
 				<div className="md:col-span-2">
 					{items.map(it => (
 						<div key={it.product.id} className="flex items-center gap-4 p-4 border rounded mb-3">
-							<img src={it.product.image} className="w-24 h-24 object-cover" />
+							<img src={it.product.image} alt={it.product.title || ''} className="w-24 h-24 object-cover" />
 							<div className="flex-1">
 								<div className="font-semibold">{it.product.title}</div>
-								<div className="text-sm text-gray-600">${(it.product.price*(1-it.product.discount/100)).toFixed(2)}</div>
+								<div className="text-sm text-gray-600">${getProductPrice(it.product).toFixed(2)}</div>
 							</div>
 							<div className="flex items-center gap-2">
 								<button onClick={() => decrease(it.product.id)} className="px-2">-</button>

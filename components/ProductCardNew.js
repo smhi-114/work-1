@@ -4,7 +4,9 @@ import { useCartStore } from '../store/cart-store'
 
 export default function ProductCardNew({ product }){
   const addItem = useCartStore(state => state.addItem)
-  const price = (product.price*(1-product.discount/100)).toFixed(2)
+  const originalPrice = product?.price || 0
+  const discount = product?.discount || 0
+  const price = (originalPrice * (1 - discount / 100)).toFixed(2)
 
   return (
     <div className="card p-3 shadow-sm hover:shadow-lg ease-fast transform hover:-translate-y-1">
@@ -18,7 +20,7 @@ export default function ProductCardNew({ product }){
         <div className="mt-2 flex items-center justify-between">
           <div>
             <div className="text-red-600 font-extrabold">{price} تومان</div>
-            {product.discount>0 && <div className="text-xs text-gray-400 line-through">{product.price} تومان</div>}
+            {discount>0 && <div className="text-xs text-gray-400 line-through">{originalPrice} تومان</div>}
           </div>
           <button onClick={()=> addItem(product,1)} className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">افزودن</button>
         </div>
