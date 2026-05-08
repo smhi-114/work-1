@@ -13,3 +13,19 @@ export const metadata = {
     type: "website",
   },
 };
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="fa">
+      <body>
+        <CartProvider>
+          <Navbar />
+
+          <main>{children}</main>
+
+          <Footer />
+        </CartProvider>
+      </body>
+    </html>
+  );
+}
