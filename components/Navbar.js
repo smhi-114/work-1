@@ -21,6 +21,7 @@ export default function Navbar(){
 				</div>
 
 				<div className="flex items-center gap-4">
+					<Link href="/" className="text-sm font-medium text-gray-700 hover:text-red-600">خانه</Link>
 					<Link href="/login" className="text-sm text-gray-700">ورود / ثبت‌نام</Link>
 					<Link href="/cart" className="relative text-gray-700">
 						<span className="text-2xl">🛒</span>

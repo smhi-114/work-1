@@ -1,15 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    // allow placeholder images used in mock data
-    domains: ["placehold.co", "via.placeholder.com"],
-    formats: ["image/avif", "image/webp"],
-  },
-};
-
-module.exports = nextConfig;
-
 const securityHeaders = [
   {
     key: "X-Frame-Options",
@@ -21,7 +10,13 @@ const securityHeaders = [
   },
 ];
 
-module.exports = {
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    // allow placeholder images used in mock data
+    domains: ["placehold.co", "via.placeholder.com"],
+    formats: ["image/avif", "image/webp"],
+  },
   async headers() {
     return [
       {
@@ -31,3 +26,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
