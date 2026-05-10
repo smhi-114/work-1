@@ -1,45 +1,43 @@
 // Verify OTP API Route
-// Validates the OTP sent to user
+// Validates the OTP sent to user and generates JWT token
 
-export async function POST(request) {
+import { verifyOtp } from '../../../lib/models/Otp.js';
+import { generateToken } from '../../../lib/utils/jwt.js';
+
+export async function POST(req) {
   try {
-    const { email, phone, otp } = await request.json();
+    const { phone, otp } = await req.json();
 
-    // Validate input
-    if (!otp) {
-      return new Response(JSON.stringify({ error: "OTP is required" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+    if (!phone || !otp) {
+      return Response.json(
+        { error: 'شماره موبایل و کد تایید الزامی است' },
+        { status: 400 }
+      );
     }
 
-    // TODO: Verify OTP against stored value
-    // Check if OTP exists, is not expired, and matches
+    // Verify OTP
+    const verifiedOtp = await verifyOtp(phone, otp);
 
-    // For now, accept any 6-digit OTP
-    if (otp.length !== 6 || isNaN(otp)) {
-      return new Response(JSON.stringify({ error: "Invalid OTP format" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+    if (!verifiedOtp) {
+      return Response.json(
+        { error: 'کد تایید نامعتبر یا منقضی شده است' },
+        { status: 400 }
+      );
     }
 
-    // TODO: Generate JWT token upon successful verification
-    // const token = jwt.sign({ email, phone }, process.env.JWT_SECRET);
+    // Generate JWT token
+    const token = generateToken({ phone });
 
-    return new Response(
-      JSON.stringify({
-        success: true,
-        message: "OTP verified successfully",
-        // In production, remove this debug line
-        debugValid: true,
-      }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
-    );
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
+    return Response.json({
+      success: true,
+      message: 'کد تایید صحیح است',
+      token,
     });
+  } catch (error) {
+    console.error('خطا در تایید OTP:', error);
+    return Response.json(
+      { error: 'خطا در سیستم، لطفاً دوباره تلاش کنید' },
+      { status: 500 }
+    );
   }
 }

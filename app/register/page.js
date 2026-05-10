@@ -89,6 +89,10 @@ export default function RegisterPage() {
 
       if (response.ok) {
         setSuccess("ثبت‌نام با موفقیت انجام شد");
+        // Store token in cookies
+        if (data.token) {
+          document.cookie = `auth_token=${data.token}; path=/; max-age=${60 * 60 * 24 * 7}; HttpOnly; SameSite=Lax`;
+        }
         // Redirect to login page after 2 seconds
         setTimeout(() => {
           window.location.href = "/login";
