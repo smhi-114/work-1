@@ -2,9 +2,9 @@
 // Protect routes that require authentication
 
 import { NextResponse } from "next/server";
-import { verifyToken } from "./lib/utils/jwt.js";
+import { verifyTokenEdge } from "@/lib/utils/edge-jwt.js";
 
-export function middleware(request) {
+export async function middleware(request) {
   const token = request.cookies.get("auth_token")?.value;
 
   // Routes that don't require authentication
@@ -54,7 +54,7 @@ export function middleware(request) {
     }
 
     // Verify the token
-    const decoded = verifyToken(token);
+    const decoded = await verifyTokenEdge(token);
     if (!decoded) {
       const loginUrl = new URL("/login", request.url);
       loginUrl.searchParams.set("redirect", request.nextUrl.pathname);

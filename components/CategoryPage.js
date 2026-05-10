@@ -1,7 +1,7 @@
-import CategorySection from "./CategorySection";
-import ProductGridNew from "./ProductGridNew";
-import { categories } from "../lib/categories";
-import { products } from "../lib/data";
+import CategorySection from "@/components/CategorySection";
+import ProductGridNew from "@/components/ProductGridNew";
+import { categories } from "@/lib/categories";
+import { products } from "@/lib/data";
 
 export default function CategoryPage({ categoryId }) {
   const category = categories.find((item) => item.id === categoryId);
@@ -24,4 +24,3 @@ export default function CategoryPage({ categoryId }) {
     </div>
   );
 }
-

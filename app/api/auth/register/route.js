@@ -5,13 +5,13 @@ import {
   createUser,
   findUserByPhone,
   findUserByEmail,
-} from "../../../lib/models/User.js";
-import { hashPassword, validatePassword } from "../../../lib/utils/password.js";
-import { generateToken } from "../../../lib/utils/jwt.js";
+} from "@/lib/models/User.js";
+import { hashPassword, validatePassword } from "@/lib/utils/password.js";
+import { generateToken } from "@/lib/utils/jwt.js";
 
-export async function POST(req) {
+export async function POST(request) {
   try {
-    const { name, phone, password, email } = await req.json();
+    const { name, phone, password, email } = await request.json();
 
     // Validate required fields
     if (!name || !phone || !password) {

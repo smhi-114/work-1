@@ -1,4 +1,4 @@
-import { products } from '../../../lib/data'
+import { products } from '@/lib/data'
 
 export default function ProductPage({ params }){
 	const product = products.find(p => p.id === params.id)

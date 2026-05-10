@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import { useCartStore } from '../store/cart-store'
+import { useCartStore } from '@/store/cart-store'
 
 export default function ProductCardNew({ product }){
   const addItem = useCartStore(state => state.addItem)

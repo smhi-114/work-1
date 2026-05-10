@@ -1,5 +1,5 @@
 "use client"
-import ProductCardNew from './ProductCardNew'
+import ProductCardNew from '@/components/ProductCardNew'
 
 export default function ProductGridNew({ items }){
   return (

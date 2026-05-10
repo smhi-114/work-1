@@ -1,8 +1,8 @@
-import HeroSlider from "./HeroSlider";
-import CategorySection from "./CategorySection";
-import ProductGridNew from "./ProductGridNew";
-import SpecialOffer from "./SpecialOffer";
-import { products } from "../lib/data";
+import HeroSlider from "@/components/HeroSlider";
+import CategorySection from "@/components/CategorySection";
+import ProductGridNew from "@/components/ProductGridNew";
+import SpecialOffer from "@/components/SpecialOffer";
+import { products } from "@/lib/data";
 
 export default function HomePage() {
   return (
@@ -22,4 +22,3 @@ export default function HomePage() {
     </div>
   );
 }
-

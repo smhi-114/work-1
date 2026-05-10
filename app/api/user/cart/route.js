@@ -9,8 +9,10 @@ import {
   clearCart,
   getCartItemCount,
   getCartTotal,
-} from "../../../lib/models/Cart.js";
-import { getUserFromToken } from "../../../lib/session.js";
+} from "@/lib/models/Cart.js";
+import { getUserFromToken } from "@/lib/session.js";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {

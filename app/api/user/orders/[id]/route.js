@@ -1,8 +1,10 @@
 // User Order Detail API Route
 // Get specific order details or cancel order
 
-import { getOrderById, cancelOrder } from "../../../lib/models/Order.js";
-import { getUserFromToken } from "../../../lib/session.js";
+import { getOrderById, cancelOrder } from "@/lib/models/Order.js";
+import { getUserFromToken } from "@/lib/session.js";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req, { params }) {
   try {

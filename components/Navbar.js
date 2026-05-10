@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useCartStore } from "../store/cart-store";
-import TopMenu from "./TopMenu";
+import { useCartStore } from "@/store/cart-store";
+import TopMenu from "@/components/TopMenu";
 
 export default function Navbar() {
   const items = useCartStore((state) => state.items || []);

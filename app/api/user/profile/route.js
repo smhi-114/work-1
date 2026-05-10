@@ -1,8 +1,10 @@
 // User Profile API Route
 // Get and update user profile
 
-import { findUserById } from "../../../lib/models/User.js";
-import { getUserFromToken } from "../../../lib/session.js";
+import { findUserById, updateUser } from "@/lib/models/User.js";
+import { getUserFromToken } from "@/lib/session.js";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {

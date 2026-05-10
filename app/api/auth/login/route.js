@@ -1,13 +1,13 @@
 // Login API Route
 // Handles user login with email/phone and password
 
-import { findUserByPhone, findUserByEmail } from "../../../lib/models/User.js";
-import { comparePassword } from "../../../lib/utils/password.js";
-import { generateToken } from "../../../lib/utils/jwt.js";
+import { findUserByPhone, findUserByEmail } from "@/lib/models/User.js";
+import { comparePassword } from "@/lib/utils/password.js";
+import { generateToken } from "@/lib/utils/jwt.js";
 
-export async function POST(req) {
+export async function POST(request) {
   try {
-    const { email, phone, password } = await req.json();
+    const { email, phone, password } = await request.json();
 
     if (!email && !phone) {
       return Response.json(

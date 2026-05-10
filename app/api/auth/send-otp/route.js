@@ -1,7 +1,7 @@
 // Send OTP API Route
 // Handles sending OTP to user's phone and storing in MongoDB
 
-import { createOtp } from "../../../lib/models/Otp.js";
+import { createOtp } from "@/lib/models/Otp.js";
 
 export async function POST(req) {
   try {

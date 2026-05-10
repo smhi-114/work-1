@@ -1,6 +1,6 @@
 "use client";
 
-import { useCartStore } from "../../store/cart-store";
+import { useCartStore } from "@/store/cart-store";
 
 function getProductPrice(product) {
   return (product?.price || 0) * (1 - (product?.discount || 0) / 100);

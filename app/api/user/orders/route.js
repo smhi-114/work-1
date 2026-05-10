@@ -2,11 +2,12 @@
 // Get user's orders
 
 import {
+  createOrder,
   getUserOrders,
-  getOrderById,
-  cancelOrder,
-} from "../../../lib/models/Order.js";
-import { getUserFromToken } from "../../../lib/session.js";
+} from "@/lib/models/Order.js";
+import { getUserFromToken } from "@/lib/session.js";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {

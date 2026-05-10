@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { categories } from "../lib/categories";
+import { categories } from "@/lib/categories";
 
 export default function CategorySection() {
   return (
@@ -20,4 +20,3 @@ export default function CategorySection() {
     </div>
   );
 }
-

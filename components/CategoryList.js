@@ -1,2 +1,1 @@
-export { default } from "./CategorySection";
-
+export { default } from "@/components/CategorySection";

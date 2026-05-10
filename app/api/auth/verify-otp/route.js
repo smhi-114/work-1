@@ -1,8 +1,8 @@
 // Verify OTP API Route
 // Validates the OTP sent to user and generates JWT token
 
-import { verifyOtp } from '../../../lib/models/Otp.js';
-import { generateToken } from '../../../lib/utils/jwt.js';
+import { verifyOtp } from '@/lib/models/Otp.js';
+import { generateToken } from '@/lib/utils/jwt.js';
 
 export async function POST(req) {
   try {

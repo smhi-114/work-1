@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import banner1 from "../src/assets/images/banner1.jpg";
-import banner2 from "../src/assets/images/banner2.jpg";
-import banner3 from "../src/assets/images/banner3.jpg";
+import banner1 from "@/src/assets/images/banner1.jpg";
+import banner2 from "@/src/assets/images/banner2.jpg";
+import banner3 from "@/src/assets/images/banner3.jpg";
 
 const banners = [
   { src: banner1, alt: "بنر پیشنهادهای ویژه" },
@@ -68,4 +68,3 @@ export default function HeroSlider() {
     </div>
   );
 }
-

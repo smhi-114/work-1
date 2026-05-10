@@ -1,7 +1,9 @@
 // Get Current User API Route
 // Returns the authenticated user's data
 
-import { getUserFromToken } from "../../../lib/session.js";
+import { getUserFromToken } from "@/lib/session.js";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {

@@ -1,2 +1,1 @@
-export { default } from "./HeroSlider";
-
+export { default } from "@/components/HeroSlider";

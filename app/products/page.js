@@ -1,5 +1,5 @@
-import ProductGrid from '../../components/ProductGridNew'
-import { products } from '../../lib/data'
+import ProductGrid from '@/components/ProductGridNew'
+import { products } from '@/lib/data'
 
 export default function ProductsPage(){
 	return (

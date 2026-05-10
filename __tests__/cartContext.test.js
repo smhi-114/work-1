@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { CartProvider, useCart } from '../context/CartContext'
+import { CartProvider, useCart } from '@/context/CartContext'
 
 function TestConsumer(){
   const { items, addItem, remove, increase, decrease, clear, total } = useCart()
