@@ -23,15 +23,137 @@ export default function Navbar() {
         </div>
 
         <div className="flex-1 px-4">
-          <div className="relative">
-            <input
-              placeholder="جستجو در بین میلیون‌ها محصول..."
-              className="w-full rounded-full border border-gray-200 px-5 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-100"
-            />
+          {/* Search Section */}
+          <div className="flex flex-col gap-3">
+            {/* Search Box */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="جستجو در بین میلیون‌ها محصول..."
+                className="
+					w-full
+					h-12
+					rounded-full
+					bg-gray-100
+					border border-gray-200
+					pr-5
+					pl-24
+					text-sm
+					outline-none
+					transition
+					duration-200
+					focus:border-red-400
+					focus:bg-white
+					focus:ring-4
+					focus:ring-red-50
+				"
+              />
 
-            <button className="absolute left-3 top-1/2 -translate-y-1/2 bg-red-600 text-white px-4 py-2 rounded-full shadow">
-              جستجو
-            </button>
+              <button
+                className="
+					absolute
+					left-2
+					top-1/2
+					-translate-y-1/2
+					bg-red-500
+					hover:bg-red-600
+					text-white
+					text-sm
+					px-5
+					h-9
+					rounded-full
+					transition
+					duration-200
+					shadow-sm
+				"
+              >
+                جستجو
+              </button>
+            </div>
+
+            {/* Bottom Navigation */}
+            <div
+              className="
+				flex
+				items-center
+				gap-4
+				overflow-x-auto
+				whitespace-nowrap
+				text-sm
+				text-gray-600
+				scrollbar-hide
+				pr-1
+			"
+            >
+              <a
+                href="#"
+                className="
+					flex items-center gap-1
+					text-red-500
+					font-medium
+					border-b-2
+					border-red-500
+					pb-1
+					flex-shrink-0
+				"
+              >
+                ☰<span>دسته‌بندی کالاها</span>
+              </a>
+
+              <span className="text-gray-300">|</span>
+
+              <a
+                href="#"
+                className="hover:text-red-500 transition duration-200 flex-shrink-0"
+              >
+                🔥 شگفت‌انگیزها
+              </a>
+
+              <span className="text-gray-300">|</span>
+
+              <a
+                href="#"
+                className="hover:text-red-500 transition duration-200 flex-shrink-0"
+              >
+                🛒 سوپرمارکت
+              </a>
+
+              <span className="text-gray-300">|</span>
+
+              <a
+                href="#"
+                className="hover:text-red-500 transition duration-200 flex-shrink-0"
+              >
+                💎 طلای دیجیتال
+              </a>
+
+              <span className="text-gray-300">|</span>
+
+              <a
+                href="#"
+                className="hover:text-red-500 transition duration-200 flex-shrink-0"
+              >
+                📈 پرفروش‌ترین‌ها
+              </a>
+
+              <span className="text-gray-300">|</span>
+
+              <a
+                href="#"
+                className="hover:text-red-500 transition duration-200 flex-shrink-0"
+              >
+                ❓ سوالی دارید؟
+              </a>
+
+              <span className="text-gray-300">|</span>
+
+              <a
+                href="#"
+                className="hover:text-red-500 transition duration-200 flex-shrink-0"
+              >
+                🏪 در دیجی‌کالا بفروشید!
+              </a>
+            </div>
           </div>
         </div>
 
