@@ -1,166 +1,92 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { useCart } from "../context/CartContext";
+import {
+  Menu,
+  Percent,
+  Store,
+  Flame,
+  MapPin,
+  LogIn,
+  ShoppingCart,
+} from "lucide-react";
 
-export default function Navbar() {
-  const { items } = useCart();
-  const [isOpen, setIsOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const cartCount = items.reduce((sum, item) => sum + (item.quantity || 0), 0);
+export default function SubHeader() {
+  // این عدد به صورت فرضی است و بعداً باید از State یا Context دریافت شود
+  const cartCount = 0;
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      {/* Top Bar */}
-      <div className="bg-red-600 text-white text-sm py-1">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <span>فروشگاه آنلاین ما</span>
-          <div className="flex space-x-4">
-            <Link href="/login" className="hover:text-red-200">
-              ورود
-            </Link>
-            <Link href="/register" className="hover:text-red-200">
-              ثبت‌نام
-            </Link>
-          </div>
-        </div>
-      </div>
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div className="container mx-auto px-4 h-14 flex items-center justify-between text-sm text-gray-700">
+        {/* بخش راست: منوها (دسته‌بندی و لینک‌های سریع) */}
+        <div className="flex items-center gap-6 overflow-x-auto whitespace-nowrap scrollbar-hide">
+          <button className="flex items-center gap-2 font-medium hover:text-red-600 transition-colors">
+            <Menu size={18} />
+            دسته‌بندی کالاها
+          </button>
 
-      {/* Main Navigation */}
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-red-600">
-            فروشگاه
+          <Link
+            href="/offers"
+            className="flex items-center gap-1 hover:text-red-600"
+          >
+            <Percent size={16} />
+            شگفت‌انگیزها
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link
-              href="/"
-              className="text-gray-700 hover:text-red-600 transition"
-            >
-              خانه
-            </Link>
-            <Link
-              href="/products"
-              className="text-gray-700 hover:text-red-600 transition"
-            >
-              محصولات
-            </Link>
-            <Link
-              href="/fashion"
-              className="text-gray-700 hover:text-red-600 transition"
-            >
-              مد و پوشاک
-            </Link>
-            <Link
-              href="/mobile"
-              className="text-gray-700 hover:text-red-600 transition"
-            >
-              موبایل
-            </Link>
-            <Link
-              href="/laptop"
-              className="text-gray-700 hover:text-red-600 transition"
-            >
-              لپ‌تاپ
-            </Link>
-            <Link
-              href="/kids"
-              className="text-gray-700 hover:text-red-600 transition"
-            >
-              کودک و نوجوان
-            </Link>
-
-            {/* Cart Link */}
-            <Link
-              href="/cart"
-              className="relative text-gray-700 hover:text-red-600 transition"
-            >
-              <span className="text-2xl">🛒</span>
-              {cartCount > 0 && (
-                <span className="absolute -top-2 left-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-gray-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          <Link
+            href="/supermarket"
+            className="flex items-center gap-1 hover:text-red-600"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+            <Store size={16} />
+            سوپرمارکت
+          </Link>
+
+          <Link
+            href="/best-selling"
+            className="flex items-center gap-1 hover:text-red-600"
+          >
+            <Flame size={16} />
+            پرفروش‌ترین‌ها
+          </Link>
         </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t">
-            <div className="flex flex-col space-y-3">
-              <Link href="/" className="text-gray-700 hover:text-red-600">
-                خانه
-              </Link>
-              <Link
-                href="/products"
-                className="text-gray-700 hover:text-red-600"
-              >
-                محصولات
-              </Link>
-              <Link
-                href="/fashion"
-                className="text-gray-700 hover:text-red-600"
-              >
-                مد و پوشاک
-              </Link>
-              <Link href="/mobile" className="text-gray-700 hover:text-red-600">
-                موبایل
-              </Link>
-              <Link href="/laptop" className="text-gray-700 hover:text-red-600">
-                لپ‌تاپ
-              </Link>
-              <Link href="/kids" className="text-gray-700 hover:text-red-600">
-                کودک و نوجوان
-              </Link>
-              <Link
-                href="/cart"
-                className="text-gray-700 hover:text-red-600 flex items-center"
-              >
-                <span className="ml-2">🛒 سبد خرید</span>
-                {cartCount > 0 && (
-                  <span className="bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </Link>
-            </div>
-          </div>
-        )}
+        {/* بخش چپ: سبد خرید، ورود و آدرس */}
+        <div className="flex items-center gap-3 flex-shrink-0">
+          {/* سبد خرید */}
+          <Link
+            href="/cart"
+            className="relative p-2 hover:bg-gray-100 rounded-full transition-all"
+          >
+            <ShoppingCart size={22} className="text-gray-700" />
+            {/* نشانگر تعداد کالاها - اگر بیشتر از ۰ بود نمایش داده شود */}
+            {cartCount > 0 && (
+              <span className="absolute top-0 right-0 bg-red-600 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-md border-2 border-white font-bold">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+
+          {/* خط جدا کننده */}
+          <span className="w-[1px] h-6 bg-gray-200 mx-1"></span>
+
+          {/* دکمه ورود / ثبت نام */}
+          <Link
+            href="/auth/login"
+            className="flex items-center gap-2 px-3 py-1.5 border border-gray-300 rounded-md hover:bg-gray-50 transition-all font-medium"
+          >
+            <LogIn size={20} className="text-gray-600" />
+            <span className="hidden sm:inline">ورود | ثبت‌نام</span>
+          </Link>
+
+          {/* خط جدا کننده دوم */}
+          <span className="w-[1px] h-6 bg-gray-200 mx-1"></span>
+
+          {/* انتخاب آدرس */}
+          <button className="flex items-center gap-2 text-gray-700 hover:text-orange-600 transition-colors">
+            <MapPin size={20} className="text-orange-500" />
+            <span className="hidden lg:inline">انتخاب آدرس</span>
+          </button>
+        </div>
       </div>
     </header>
   );
